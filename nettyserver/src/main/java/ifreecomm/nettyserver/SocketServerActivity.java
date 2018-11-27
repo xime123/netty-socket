@@ -15,6 +15,8 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import ifreecomm.nettyserver.nio.TCPServer;
+
 /**
  * 基于TCP协议的socket通信，实现用户登录，服务端
  */
@@ -97,6 +99,16 @@ public class SocketServerActivity extends AppCompatActivity {
     }
 
     private void printLogI(String msg) {
-        Log.e(TAG, "msg="+msg);
+        Log.e(TAG, "msg=" + msg);
+    }
+
+    public void startNIOServer(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                TCPServer.startServer();
+
+            }
+        }).start();
     }
 }
